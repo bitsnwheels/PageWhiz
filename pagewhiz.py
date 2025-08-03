@@ -25,7 +25,7 @@ def get_answer_from_url(url: str, question: str) -> str:
         page_content = docs[0].page_content
 
         # Split the document into chunks
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=35)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=150, chunk_overlap=60)
         chunks = text_splitter.create_documents([page_content])
 
         # Create embeddings and vector store
