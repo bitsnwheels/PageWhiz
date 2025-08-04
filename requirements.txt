@@ -7,3 +7,6 @@ beautifulsoup4
 Flask
 gunicorn
 python-dotenv
+deep-translator
+langdetect
+bs4
