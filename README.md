@@ -17,4 +17,70 @@ It automatically fetches, processes, embeds, and stores webpage text to enable i
 ---
 
 ## 🏗️ Architecture Overview
+      ┌──────────────────────────────┐
+      │          User Input           │
+      │ (Enter webpage URL + query)   │
+      └──────────────┬───────────────┘
+                     │
+             [1] WebPageLoader
+                     │
+      ┌──────────────▼───────────────┐
+      │    Text Extraction & Split    │
+      │ (RecursiveCharacterTextSplitter)
+      └──────────────┬───────────────┘
+                     │
+             [2] Embeddings (OpenAI/HF)
+                     │
+      ┌──────────────▼───────────────┐
+      │      Vector Store (FAISS)     │
+      │   + Similarity Search Index    │
+      └──────────────┬───────────────┘
+                     │
+              [3] LangChain Retriever
+                     │
+      ┌──────────────▼───────────────┐
+      │   Chat Model (LLM Interface)  │
+      │  (OpenAI / Gemini / Local LLM)│
+      └──────────────┬───────────────┘
+                     │
+            💬 Response to User
+
+---
+
+## 🧩 Tech Stack
+
+- **Python 3.10+**
+- **LangChain** — document loading, text processing, and chains  
+- **FAISS / Chroma** — vector database  
+- **OpenAI / Hugging Face / Local Models** — embeddings and LLMs  
+- **BeautifulSoup4 / Requests** — webpage scraping  
+- **Gradio / Streamlit** — simple frontend UI  
+
+---
+
+## ⚙️ Installation
+
+```bash
+# 1️⃣ Clone the repository
+git clone https://github.com/<your-username>/langchain-url-chatbot.git
+cd langchain-url-chatbot
+
+# 2️⃣ Create a virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# 3️⃣ Install dependencies
+pip install -r requirements.txt
+
+
+OPENAI_API_KEY=your_openai_api_key
+# or if you’re using Hugging Face embeddings:
+HUGGINGFACEHUB_API_TOKEN=your_hf_token
+python app.py
+streamlit run app.py
+# or
+python gradio_app.py
+Enter URL: https://en.wikipedia.org/wiki/Artificial_intelligence
+User: What are the main subfields of AI?
+Bot: The major subfields include machine learning, computer vision, natural language processing, robotics, and expert systems.
 
