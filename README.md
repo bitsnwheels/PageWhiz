@@ -12,7 +12,7 @@ It automatically fetches, processes, embeds, and stores webpage text to enable i
 - 💬 **Conversational Memory** — The bot remembers chat history for better contextual answers.  
 - ⚡ **Local or API-based Models** — Works with OpenAI, Hugging Face, or local sentence-transformer models.  
 - 🧱 **Vector Database** — FAISS or Chroma for fast semantic retrieval.  
-- 🖥️ **Frontend Ready** — Optional Gradio or Streamlit interface for a clean chat experience.
+- 🖥️ **Frontend Ready** — Optional Gradio or Streamlit interface for a clean chat expe.
 
 ---
 
